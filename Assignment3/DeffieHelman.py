@@ -1,13 +1,22 @@
-import math;
-p=int(input("Enter p:"))
-g=int(input("Enter g:"))
-X_A=int(input("Enter X_A :"))
-X_B=int(input("Enter X_B :"))
-Y_A=pow(g,X_A,p)
-print("Y_A is :",Y_A)
-Y_B=pow(g,X_B,p)
-print("Y_B is :",Y_B)
-K_A=pow(Y_B,X_A,p)
-print("K_A is :",K_A)
-K_B=pow(Y_A,X_B,p)
-print("K_B is :",K_B)
+p = int(input("Enter a prime number (p): "))
+q = int(input("Enter a primitive root (q): "))
+Xa = int(input("Enter private key of user A (Xa): "))
+Xb = int(input("Enter private key of user B (Xb): "))
+
+def rsa_key_exchange(p, q, Xa, Xb):
+    Ya = (q ** Xa) % p  
+    Yb = (q ** Xb) % p  
+    
+    k1 = (Yb ** Xa) % p  
+    k2 = (Ya ** Xb) % p  
+    
+    print(f"Public key of A (Ya) = {Ya}")
+    print(f"Public key of B (Yb) = {Yb}")
+    print(f"Shared secret key = {k1}")
+    
+    if k1 == k2:
+        print("Key exchange successful!")
+    else:
+        print("Error: Shared secrets do not match!")
+
+rsa_key_exchange(p, q, Xa, Xb)
