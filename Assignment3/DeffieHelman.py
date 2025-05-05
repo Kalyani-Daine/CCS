@@ -3,7 +3,7 @@ q = int(input("Enter a primitive root (q): "))
 Xa = int(input("Enter private key of user A (Xa): "))
 Xb = int(input("Enter private key of user B (Xb): "))
 
-def rsa_key_exchange(p, q, Xa, Xb):
+def DH_key_exchange(p, q, Xa, Xb):
     Ya = (q ** Xa) % p  
     Yb = (q ** Xb) % p  
     
@@ -19,4 +19,4 @@ def rsa_key_exchange(p, q, Xa, Xb):
     else:
         print("Error: Shared secrets do not match!")
 
-rsa_key_exchange(p, q, Xa, Xb)
+DH_key_exchange(p, q, Xa, Xb)
